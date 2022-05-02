@@ -41,7 +41,6 @@ jobs:
         run: |
           export CROSS_COMPILE=$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-
           export ARCH=arm && export SUBARCH=arm
-          cd kernel
           make clean
           make mrproper
           make gtel3g_defconfig
