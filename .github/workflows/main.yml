@@ -39,10 +39,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Compile kernel
         run: |
-          export CROSS_COMPILE=$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-
-          export ARCH=arm && export SUBARCH=arm
-          make clean
-          make mrproper
-          make gtel3g_defconfig
-          make -j$(nproc --all)
+          make CROSS_COMPILE="$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-" ARCH=arm SUBARCH=arm clean
+          make CROSS_COMPILE="$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-" ARCH=arm SUBARCH=arm mrproper
+          make CROSS_COMPILE="$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-" ARCH=arm SUBARCH=arm gtel3g_defconfig
+          make CROSS_COMPILE="$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-" ARCH=arm SUBARCH=arm -j$(nproc --all)
           find -name *Image*
