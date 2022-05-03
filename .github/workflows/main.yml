@@ -44,7 +44,7 @@ jobs:
           make CROSS_COMPILE="$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-" ARCH=arm SUBARCH=arm gtel3g_defconfig
           make CROSS_COMPILE="$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-" ARCH=arm SUBARCH=arm -j$(nproc --all)
           find -name *Image*
-          export CROSS_COMPILE="$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-" && export ARCH=arm && export SUBARCH=arm && ./dtbtool -o arch/arm/boot/dt.img -s 2048 -p scripts/dtc/ arch/arm/boot/ 
+          export CROSS_COMPILE="$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-" && export ARCH=arm && export SUBARCH=arm && ./dtbtool -o arch/arm/boot/dt.img -s 2048 -p scripts/dtc/ arch/arm/boot/dts 
       - uses: actions/upload-artifact@v2
         with:
           name: images
