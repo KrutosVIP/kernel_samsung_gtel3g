@@ -44,6 +44,10 @@ jobs:
           make CROSS_COMPILE="$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-" ARCH=arm SUBARCH=arm gtel3g_defconfig
           make CROSS_COMPILE="$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-" ARCH=arm SUBARCH=arm -j$(nproc --all)
           find -name *Image*
+          git clone https://github.com/Artx-II/KernelBuilding-Essentials kscripts
+          cp kscripts/* ./ -r
+          rm -rf kscripts
+          bash CROSS_COMPILE="$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-" ARCH=arm SUBARCH=arm core.sh —dtb
           
       - uses: actions/upload-artifact@v2
         with:
@@ -53,3 +57,13 @@ jobs:
         with:
           name: dtb
           path: arch/arm/boot/dts/*.dtb
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dtb
+          path: arch/arm/boot/dts/*.dtb
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dt.img
+          path: arch/arm/boot/dt.img
