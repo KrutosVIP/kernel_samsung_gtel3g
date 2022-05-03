@@ -47,7 +47,7 @@ jobs:
           git clone https://github.com/Artx-II/KernelBuilding-Essentials kscripts
           cp kscripts/* ./ -r
           rm -rf kscripts
-          bash CROSS_COMPILE="$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-" ARCH=arm SUBARCH=arm core.sh —dtb
+          bash core.sh —dtb CROSS_COMPILE="$(pwd)/toolchain/arm-cortex_a7-linux-gnueabihf-linaro_4.9.3-2015.03/bin/arm-cortex_a7-linux-gnueabihf-" ARCH=arm SUBARCH=arm
           
       - uses: actions/upload-artifact@v2
         with:
